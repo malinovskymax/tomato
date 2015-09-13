@@ -1,0 +1,31 @@
+.column {
+    width: 2em;
+    height: 2em;
+}
+
+
+.can-be-defeated {
+    transition:0.25s linear all;
+}
+.can-be-defeated.on-add {
+    color: white;
+}
+.can-be-defeated.on {
+    color: red;
+}
+.can-be-defeated.on-remove {
+
+}
+
+.in-defeat-range {
+    transition:0.25s linear all;
+}
+.in-defeat-range.on-add {
+    background: orange;
+}
+.in-defeat-range.on {
+    background: orange;
+}
+.in-defeat-range.on-remove {
+
+}

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <h4>Draw the map and place targets on it by clicking on cells</h4>
+    <p>Do not try to find bugs, there is almost no validation, I made this just for fun</p>
+    <h4>Best map size between 5x5 and 15x15, best tomato damage range between 3 and 5</h4>
+    <table class="table-bordered table-hover text-center" ng-show="anyTargets">
+        <tr ng-repeat="(index, colHeader) in map">
+            <th ng-hide="index">r/c</th>
+            <th ng-repeat="(colIndex, header) in colHeader" ng-hide="header.row">{{colIndex}}</th>
+        </tr>
+        <tr ng-repeat="(rowIndex, row) in map">
+            <th>{{rowIndex}}</th>
+            <td class="column in-defeat-range"
+                ng-class="{'on' : col.inDefeatRange}"
+                ng-repeat="col in row"
+                ng-click="col.target = running ? col.target : !col.target">
+                <span class="can-be-defeated"
+                      ng-class="{'on' : col.canBeDefeated, 'glyphicon glyphicon-asterisk' : col.target}"></span>
+            </td>
+        </tr>
+    </table>
+    <p ng-show="map.length">Max defeated targets: {{bestPositions.max}}</p>
+    <p ng-show="bestPositions.max">Best points to throw tomato (rXc):</p>
+    <ul>
+        <li ng-repeat="point in bestPositions.positions">{{point.row}}X{{point.col}}</li>
+    </ul>
+    <br>
+    <br>
+    <form class="form-inline" ng-hide="running">
+        Rows:
+        <input type="number" class="form-control" ng-model="mapParams.rows">
+        Cols:
+        <input type="number" class="form-control" ng-model="mapParams.cols">
+        Damage range (must be odd):
+        <input type="number" class="form-control" ng-model="tomatoDamageRange">
+        <input type="button" class="btn btn-info" value="Draw map" ng-click="drawMap()">
+        <input type="button" class="btn btn-info" value="Where to throw tomato?" ng-click="whereToThrowTomato()">
+    </form>
+</div>

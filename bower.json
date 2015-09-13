@@ -1,0 +1,9 @@
+{
+  "name": "where-to-throw-tomato",
+  "dependencies": {
+    "angular": "1.4.5",
+    "angular-ui-router": "latest",
+    "angular-animate": "latest",
+    "bootstrap": "latest"
+  }
+}
